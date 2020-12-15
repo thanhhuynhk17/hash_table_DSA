@@ -5,8 +5,9 @@
 
 using namespace std;
 
-struct Company
-{
+#define HASH_TABLE_SIZE 2000
+
+struct Company{
 	string name;
 	string profit_tax;
 	string address;
@@ -16,6 +17,7 @@ struct Company
 		profit_tax = "";
 		address = "";
 	}
+
 };
 
 

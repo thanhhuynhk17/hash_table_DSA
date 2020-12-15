@@ -9,7 +9,19 @@ int main() {
 
 	vector<Company> lsCompany = readCompanyList(fname);
 	
-	hashString(lsCompany[1].name);
+	Company* pCompany = createHashTable(lsCompany);
+
+	// print test
+	for (int i = 0; i < HASH_TABLE_SIZE; i++)
+	{
+		if (pCompany->name == "") {
+
+		}
+	}
+
+	if (pCompany != NULL){
+		delete[]pCompany;
+	}
 
 	return 0;
 }

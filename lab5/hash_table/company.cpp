@@ -3,6 +3,7 @@
 #include <string>
 #include <math.h>
 
+
 #pragma region Helper functions
 
 vector<string> splitStr(const string& str, const char& delim) {
@@ -104,15 +105,30 @@ long long hashString(string company_name) {
 		}
 	}
 
-
 	return hashCode;
 }
 
 // 3. Viết hàm tạo một bảng băm kích thước 2000, được tạo từ danh sách các công ty:
 Company* createHashTable(vector<Company> list_company) {
-	Company* company_ptr = new Company();
+	Company* pCompany = new Company[HASH_TABLE_SIZE];
+	pCompany[0];
+	for (int i = 0; i < list_company.size(); i++){
+		int hashCode = hashString(list_company[i].name) % HASH_TABLE_SIZE;
 
-	return company_ptr;
+		/// INSERT INTO HASH TABLE
+		// get unuse index in hash table
+		int index = hashCode;
+		int k = 0;
+		while (pCompany[index].name != ""){
+			index = (index + 1) % HASH_TABLE_SIZE;
+		}
+		// insert company data
+		pCompany[index].name = list_company[i].name;
+		pCompany[index].profit_tax = list_company[i].profit_tax;
+		pCompany[index].address = list_company[i].address;
+	}
+
+	return pCompany;
 }
 
 // 4. Viết hàm thêm thông tin của một công ty vào bảng băm có sẵn:
